@@ -51,6 +51,9 @@ section{
         cursor: pointer;
         text-align:left;
       }
+      div2{
+        text-align: center;
+      }
       
       body.default {
         background-color: white;
