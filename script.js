@@ -1,6 +1,6 @@
 
 
-const lightModeButton =document.getElementById('light-mode');
+const defaulttModeButton =document.getElementById('default');
 const darkModeButton = document.getElementById('dark-mode');
 const warmColorsButton = document.getElementById('warm-colors');
 const currentSettingText = document.getElementById('current-setting');
@@ -12,7 +12,7 @@ function updateAppearance(mode, text) {
 }
 
 // Event listeners for buttons
-lightModeButton.addEventListener('click', () => updateAppearance('light-mode', 'Light Mode'));
+defaultModeButton.addEventListener('click', () => updateAppearance('default-mode', 'default Mode'));
 darkModeButton.addEventListener('click', () => updateAppearance('dark-mode', 'Dark Mode'));
 warmColorsButton.addEventListener('click', () => updateAppearance('warm-colors', 'Warm Colors'));
 
