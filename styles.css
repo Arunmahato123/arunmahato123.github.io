@@ -49,7 +49,7 @@ section{
     button {
         font-size: 12px;
         cursor: pointer;
-        text-align: center;
+        text-align:left;
       }
       
       body.default {
