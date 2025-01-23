@@ -17,5 +17,3 @@ darkModeButton.addEventListener('click', () => updateAppearance('dark-mode', 'Da
 warmColorsButton.addEventListener('click', () => updateAppearance('warm-colors', 'Warm Colors'));
 
 
-window.onload = () => {
-  setTheme('default')}
