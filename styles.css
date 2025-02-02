@@ -31,10 +31,16 @@ h2{
     font-size: 1.8em;
     text-align: center;
 }
+
    
 section{
     text-align: center;
 }
+
+lab{
+    text-align: center;
+  }
+
 
 
     footer{ 
@@ -67,6 +73,7 @@ section{
         background-color: #ffebcd;
         color: #8b4513;
       }
+
 
 
 
