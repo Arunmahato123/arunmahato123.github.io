@@ -40,12 +40,14 @@ function checkWin() {
   let b3 = document.getElementById("b3").innerHTML;
   let c3 = document.getElementById("c3").innerHTML;
 
-  // Check rows for X
+  // checking row for 'x'
   if (a1 == b1 && b1 == c1 && a1 == "X") {
     document.getElementById("winnerMessage").innerHTML = "X wins!";
-  } else if (a2 == b2 && b2 == c2 && a2 == "X") {
+  } 
+  else if (a2 == b2 && b2 == c2 && a2 == "X") {
     document.getElementById("winnerMessage").innerHTML = "X wins!";
-  } else if (a3 == b3 && b3 == c3 && a3 == "X") {
+  } 
+  else if (a3 == b3 && b3 == c3 && a3 == "X") {
     document.getElementById("winnerMessage").innerHTML = "X wins!";
   }
 
