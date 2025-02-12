@@ -31,10 +31,10 @@ h2{
     font-size: 1.8em;
     text-align: center;
 }
-h5{
-    font-size: 0.4cm;
-}
 
+h5, h6{
+    font-size: medium;
+}
    
 section{
     text-align: center;
