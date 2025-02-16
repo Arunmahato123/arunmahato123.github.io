@@ -1,4 +1,4 @@
-/* General styling */
+
 body {
     font-family: Arial, sans-serif;
     display: flex;
@@ -58,7 +58,6 @@ button.tile[disabled] {
     cursor: not-allowed;
 }
 
-/* Reset button styling */
 #resetButton {
     padding: 10px 20px;
     font-size: 1.2em;

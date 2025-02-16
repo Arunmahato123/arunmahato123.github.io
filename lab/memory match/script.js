@@ -1,4 +1,4 @@
-// script.js
+
 let map = [];
 let tile1 = null, tile2 = null;
 
