@@ -1,5 +1,9 @@
-// Generate a random 4-digit secret code (numbers 1-6)
-const secretCode = Array.from({length: 4}, () => Math.floor(Math.random() * 6) + 1);
+// Function to generate a random 4-digit secret code (numbers 1-6)
+function generateSecretCode() {
+    return Array.from({ length: 4 }, () => Math.floor(Math.random() * 6) + 1);
+}
+
+let secretCode = generateSecretCode();
 console.log("Secret Code:", secretCode.join("")); // Debugging hint
 
 // Custom error class
@@ -63,10 +67,21 @@ function checkGuess() {
         }
     }
 
-    document.getElementById("feedback").innerText = 
+    document.getElementById("feedback").innerText =
         `Black: ${black}, White: ${white}`;
 
     if (black === 4) {
         alert("Congratulations! You guessed the code!");
     }
 }
+
+// Function to reset the game
+function resetGame() {
+    secretCode = generateSecretCode();
+    console.log("New Secret Code:", secretCode.join("")); // Debugging hint
+    document.getElementById("userGuess").value = "";
+    document.getElementById("feedback").innerText = "";
+}
+
+// Add event listener to reset button
+document.getElementById("resetButton").addEventListener("click", resetGame);
