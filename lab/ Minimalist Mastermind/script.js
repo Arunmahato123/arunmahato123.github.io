@@ -1,12 +1,12 @@
-// Function to generate a random 4-digit secret code (numbers 1-6)
+// Function for the 4 digits between 1 to 6
 function generateSecretCode() {
     return Array.from({ length: 4 }, () => Math.floor(Math.random() * 6) + 1);
 }
 
 let secretCode = generateSecretCode();
-console.log("Secret Code:", secretCode.join("")); // Debugging hint
+console.log("Secret Code:", secretCode.join("")); 
 
-// Custom error class
+
 class RuleError extends Error {
     constructor(message) {
         super(message);
@@ -40,7 +40,7 @@ function checkGuess() {
 
     const userGuess = userInput.split("").map(Number);
 
-    // Validate each input number
+
     for (let num of userGuess) {
         if (!checkInput(num)) {
             return;
@@ -51,15 +51,15 @@ function checkGuess() {
     let black = 0, white = 0;
     let codeCopy = [...secretCode];
 
-    // Check for correct positions (black pegs)
+    // Check for black pegs
     for (let i = 0; i < 4; i++) {
         if (userGuess[i] === codeCopy[i]) {
             black++;
-            codeCopy[i] = null; // Mark as matched
+            codeCopy[i] = null; 
         }
     }
 
-    // Check for correct digits in the wrong place (white pegs)
+    // Check for white pegs
     for (let i = 0; i < 4; i++) {
         if (codeCopy.includes(userGuess[i]) && userGuess[i] !== secretCode[i]) {
             white++;
@@ -75,13 +75,11 @@ function checkGuess() {
     }
 }
 
-// Function to reset the game
+// reset game
 function resetGame() {
     secretCode = generateSecretCode();
-    console.log("New Secret Code:", secretCode.join("")); // Debugging hint
+    console.log("New Secret Code:", secretCode.join("")); 
     document.getElementById("userGuess").value = "";
     document.getElementById("feedback").innerText = "";
 }
-
-// Add event listener to reset button
 document.getElementById("resetButton").addEventListener("click", resetGame);
