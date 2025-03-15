@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>DOM Puzzle</title>
+
+<style>
+
+/* NOTE: Do NOT modify this stylesheet */
+
+#puzzle { width: 500px; height: 500px; border: 5px solid black;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- NOTE: Do NOT modify the body or div -->
+
+<div id='puzzle'></div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const puzzle = document.getElementById("puzzle");
+
+    // Add event listeners for border highlight
+    puzzle.addEventListener("mouseenter", function () {
+        puzzle.style.border = "5px solid red";
+    });
+    puzzle.addEventListener("mouseleave", function () {
+        puzzle.style.border = "5px solid black";
+    });
+
+    // Create title
+    const title = document.createElement("h1");
+    title.textContent = "DOM Puzzle";
+    document.body.insertBefore(title, puzzle);
+
+    // Create description
+    const description = document.createElement("p");
+    description.textContent = "Recreate the puzzle using only JavaScript. Follow the instructions carefully.";
+    document.body.insertBefore(description, puzzle.nextSibling);
+
+    // Create container for upper-left buttons
+    const upperLeftContainer = document.createElement("div");
+    upperLeftContainer.style.display = "grid";
+    upperLeftContainer.style.gridTemplateColumns = "repeat(2, 50px)";
+    upperLeftContainer.style.gap = "5px";
+    puzzle.appendChild(upperLeftContainer);
+
+    // Create buttons (A, B, C, D) in upper-left quadrant
+    for (let char of ["A", "B", "C", "D"]) {
+        let button = document.createElement("button");
+        button.textContent = char;
+        button.style.width = "50px";
+        button.style.height = "50px";
+        button.style.fontSize = "20px";
+        button.style.textAlign = "center";
+        button.style.margin = "5px";
+        upperLeftContainer.appendChild(button);
+    }
+
+    // Create container for 100 buttons
+    const lowerRightContainer = document.createElement("div");
+    lowerRightContainer.style.display = "grid";
+    lowerRightContainer.style.gridTemplateColumns = "repeat(10, 30px)";
+    lowerRightContainer.style.gap = "2px";
+    lowerRightContainer.style.marginTop = "20px";
+    puzzle.appendChild(lowerRightContainer);
+
+    // Create 100 buttons in lower-right quadrant
+    for (let i = 0; i < 100; i++) {
+        let button = document.createElement("button");
+        button.textContent = i + 1;
+        button.style.width = "30px";
+        button.style.height = "30px";
+        button.style.fontSize = "14px";
+        button.style.textAlign = "center";
+        button.style.margin = "2px";
+        lowerRightContainer.appendChild(button);
+    }
+
+    // Add event listeners for buttons
+    puzzle.addEventListener("click", function (event) {
+        if (event.target.tagName === "BUTTON") {
+            event.target.style.backgroundColor = "#4A2574";
+            let buttons = Array.from(puzzle.getElementsByTagName("button"));
+            let index = buttons.indexOf(event.target);
+            if (index > 0) buttons[index - 1].style.backgroundColor = "#FF9E00";
+            if (index < buttons.length - 1) buttons[index + 1].style.backgroundColor = "#FF9E00";
+        }
+    });
+});
+
+
+</script>
+
+</body>
+</html>
