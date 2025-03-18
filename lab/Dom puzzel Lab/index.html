@@ -28,7 +28,7 @@
     puzzle.style.backgroundColor = "#7338A0";
     
 
-    // Add event listeners for border highlight
+    // Adding event listeners for border 
     puzzle.addEventListener("mouseenter", function () {
         puzzle.style.border = "5px solid red";
     });
@@ -36,17 +36,17 @@
         puzzle.style.border = "5px solid black";
     });
 
-    // Create title
+    // Creating  title
     const title = document.createElement("h1");
     title.textContent = "DOM Puzzle";
     document.body.insertBefore(title, puzzle);
 
-    // Create description
+    // Creating description
     const description = document.createElement("p");
     description.textContent = "Recreate the puzzle using only JavaScript. Follow the instructions carefully.";
     document.body.insertBefore(description, puzzle.nextSibling);
 
-    // Upper-left container (A, B, C, D)
+    // creating Upper-left container (A, B, C, D)
     const upperLeftContainer = document.createElement("div");
     upperLeftContainer.style.display = "grid";
     upperLeftContainer.style.gridTemplateColumns = "125px 125px";
@@ -54,7 +54,7 @@
     upperLeftContainer.style.gap = "0";
     puzzle.appendChild(upperLeftContainer);
 
-    // Create buttons (A, B, C, D) with specified sizes and colors
+    // Creating buttons (A, B, C, D) with specified sizes and colors
     const buttonData = [
         { label: "A", color: "#9455F4" },
         { label: "B", color: "#4A2B74" },
@@ -74,7 +74,7 @@
         upperLeftContainer.appendChild(button);
     });
 
-    // Upper-right container (B)
+    // Upper-right container 
     const upperRightContainer = document.createElement("div");
     upperRightContainer.style.width = "250px";
     upperRightContainer.style.height = "250px";
@@ -95,7 +95,7 @@
     lowerRightContainer.style.backgroundColor = "#C39CFE";
     puzzle.appendChild(lowerRightContainer);
 
-    // Create 100 buttons
+    // Creating 100 buttons
     const numberButtons = [];
     for (let i = 0; i < 100; i++) {
         let button = document.createElement("button");
@@ -110,16 +110,16 @@
         lowerRightContainer.appendChild(button);
     }
 
-    // Add event listeners ONLY for 100-numbered buttons
+    // Adding event listeners ONLY for 100-numbered buttons
     lowerRightContainer.addEventListener("click", function (event) {
         if (event.target.tagName === "BUTTON") {
             let index = numberButtons.indexOf(event.target);
             if (index !== -1) {
-                // Change clicked button color to dark purple
+                // Changing clicked button color to dark purple
                 numberButtons[index].style.backgroundColor = "#4A2574";
 
-                // Change adjacent buttons if they exist
-                if (index > 0) numberButtons[index - 1].style.backgroundColor = "#FF9E00"; // Left
+                // Changing adjacent buttons if they exist
+                if (index > 0) numberButtons[index - 1].style.backgroundColor = "#FF9E00"; 
                 if (index < numberButtons.length - 1) numberButtons[index + 1].style.backgroundColor = "#FF9E00"; // Right
             }
         }
