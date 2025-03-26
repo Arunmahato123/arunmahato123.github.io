@@ -1,11 +1,10 @@
-//  function to sanitize inputs
+// Function to sanitize inputs to prevent HTML/JavaScript injection
 function sanitizeInput(input) {
-    const element = document.createElement('div');
-    if (input) {
-        element.textContent = input; 
-        return element.innerHTML;
-    }
-    return '';
+    return input.replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/&/g, "&amp;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&apos;");
 }
 
 // Array to store sanitized data
@@ -41,6 +40,12 @@ document.getElementById('password').addEventListener('input', function () {
 document.getElementById('commentForm').addEventListener('submit', function (event) {
     event.preventDefault();
 
+    // Check if all validation errors are cleared
+    if (document.getElementById('usernameError').textContent || document.getElementById('passwordError').textContent) {
+        alert("Please correct the errors before submitting.");
+        return;
+    }
+
     // Collect all form data and sanitize it
     formDataArray = [
         sanitizeInput(document.getElementById('name').value),
@@ -52,8 +57,7 @@ document.getElementById('commentForm').addEventListener('submit', function (even
     ];
 
     // Simulate form submission or handling
-    console.log('Form submitted successfully with sanitized data:');
-    console.log(formDataArray);
+    console.log('Form submitted successfully with sanitized data:', formDataArray);
 
     // Add success feedback or handle the submission further (e.g., save to server, etc.)
     alert("Form submitted successfully!");
