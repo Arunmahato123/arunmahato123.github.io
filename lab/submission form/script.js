@@ -59,6 +59,6 @@ document.getElementById('commentForm').addEventListener('submit', function (even
     // Simulate form submission or handling
     console.log('Form submitted successfully with sanitized data:', formDataArray);
 
-    // Add success feedback or handle the submission further (e.g., save to server, etc.)
+    // Add success feedback or handle the submission further 
     alert("Form submitted successfully!");
 });
