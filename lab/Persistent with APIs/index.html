@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Persistent To-Do List</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Persistent To-Do List</h1>
+
+        <!-- Theme Toggle -->
+        <button id="theme-toggle">Toggle Theme</button>
+
+        <!-- To-Do List Form -->
+        <form id="todo-form">
+            <input type="text" id="todo-input" placeholder="Enter a task" required>
+            <button type="submit">Add Task</button>
+        </form>
+
+        <!-- Task List -->
+        <ul id="todo-list"></ul>
+
+        <!-- Session Storage Task Count -->
+        <p>Tasks added this session: <span id="task-count">0</span></p>
+
+        <!-- Motivational Quote Section -->
+        <div id="quote-container">
+            <button id="fetch-quote">Get Motivation</button>
+            <p id="quote">Click the button for a motivational quote.</p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
