@@ -7,10 +7,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const fetchQuoteBtn = document.getElementById("fetch-quote");
     const quoteContainer = document.getElementById("quote");
 
-    // === Part 1: To-Do List with Local Storage ===
+    // === Part 1: To-Do List with Session Storage ===
 
-    // Load tasks from local storage
-    let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+    // Load tasks from session storage
+    let tasks = JSON.parse(sessionStorage.getItem("tasks")) || [];
     tasks.forEach(addTaskToDOM);
 
     // Handle form submission
@@ -20,11 +20,9 @@ document.addEventListener("DOMContentLoaded", () => {
         if (task === "") return;
 
         tasks.push(task);
-        localStorage.setItem("tasks", JSON.stringify(tasks));
+        sessionStorage.setItem("tasks", JSON.stringify(tasks)); // Save in session storage
         addTaskToDOM(task);
-
         incrementTaskCount();
-
         todoInput.value = "";
     });
 
@@ -37,8 +35,9 @@ document.addEventListener("DOMContentLoaded", () => {
         deleteBtn.classList.add("delete-btn");
         deleteBtn.addEventListener("click", () => {
             tasks = tasks.filter(t => t !== task);
-            localStorage.setItem("tasks", JSON.stringify(tasks));
+            sessionStorage.setItem("tasks", JSON.stringify(tasks));
             li.remove();
+            decrementTaskCount();
         });
         li.appendChild(deleteBtn);
         todoList.appendChild(li);
@@ -55,6 +54,12 @@ document.addEventListener("DOMContentLoaded", () => {
         taskCount.textContent = count;
     }
 
+    function decrementTaskCount() {
+        count = Math.max(0, count - 1);
+        sessionStorage.setItem("taskCount", count);
+        taskCount.textContent = count;
+    }
+
     // === Part 3: Theme Persistence with Cookies ===
 
     const savedTheme = getCookie("theme");
@@ -65,14 +70,14 @@ document.addEventListener("DOMContentLoaded", () => {
     themeToggle.addEventListener("click", () => {
         document.body.classList.toggle("dark-mode");
         const theme = document.body.classList.contains("dark-mode") ? "dark-mode" : "";
-        setCookie("theme", theme, 30);
+        setCookie("theme", theme, 100);
     });
 
     // === Part 4: REST API Integration ===
 
     fetchQuoteBtn.addEventListener("click", async () => {
         try {
-            const response = await fetch("https://dog.ceo/api/breeds/image/random");
+            const response = await fetch("https://api.quotable.io/random");
             const data = await response.json();
             quoteContainer.textContent = data.content;
         } catch (error) {
