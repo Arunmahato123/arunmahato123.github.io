@@ -7,9 +7,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const fetchQuoteBtn = document.getElementById("fetch-quote");
     const quoteContainer = document.getElementById("quote");
 
-    // === Part 1: To-Do List with Session Storage ===
-
-    // Load tasks from session storage
+    //  Part 1: To-Do List with Session Storage 
+   // Load tasks from session storage
     let tasks = JSON.parse(sessionStorage.getItem("tasks")) || [];
     tasks.forEach(addTaskToDOM);
 
@@ -43,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
         todoList.appendChild(li);
     }
 
-    // === Part 2: Session Storage for Interaction Tracking ===
+    //Part 2: Session Storage for Interaction Tracking 
 
     let count = sessionStorage.getItem("taskCount") || 0;
     taskCount.textContent = count;
@@ -60,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
         taskCount.textContent = count;
     }
 
-    // === Part 3: Theme Persistence with Cookies ===
+    //Part 3: Theme Persistence with Cookies 
 
     const savedTheme = getCookie("theme");
     if (savedTheme) {
@@ -73,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
         setCookie("theme", theme, 100);
     });
 
-    // === Part 4: REST API Integration ===
+    //Part 4: REST API Integration 
 
     fetchQuoteBtn.addEventListener("click", async () => {
         try {
