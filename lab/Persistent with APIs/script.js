@@ -7,9 +7,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const fetchQuoteBtn = document.getElementById("fetch-quote");
     const quoteContainer = document.getElementById("quote");
 
-    //  Part 1: To-Do List with Session Storage 
-   // Load tasks from session storage
-    let tasks = JSON.parse(sessionStorage.getItem("tasks")) || [];
+    //  Part 1: To-Do List with Local Storage
+   // Load tasks from local storage
+    let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
     tasks.forEach(addTaskToDOM);
 
     // Handle form submission
@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (task === "") return;
 
         tasks.push(task);
-        sessionStorage.setItem("tasks", JSON.stringify(tasks)); // Save in session storage
+        localStorage.setItem("tasks", JSON.stringify(tasks)); // Save in local storage
         addTaskToDOM(task);
         incrementTaskCount();
         todoInput.value = "";
@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
         deleteBtn.classList.add("delete-btn");
         deleteBtn.addEventListener("click", () => {
             tasks = tasks.filter(t => t !== task);
-            sessionStorage.setItem("tasks", JSON.stringify(tasks));
+            localStorage.setItem("tasks", JSON.stringify(tasks));
             li.remove();
             decrementTaskCount();
         });
@@ -42,24 +42,24 @@ document.addEventListener("DOMContentLoaded", () => {
         todoList.appendChild(li);
     }
 
-    //Part 2: Session Storage for Interaction Tracking 
+    // Part 2: Session Storage for Interaction Tracking 
 
-    let count = sessionStorage.getItem("taskCount") || 0;
+    let count = localStorage.getItem("taskCount") || 0;
     taskCount.textContent = count;
 
     function incrementTaskCount() {
         count++;
-        sessionStorage.setItem("taskCount", count);
+        localStorage.setItem("taskCount", count);
         taskCount.textContent = count;
     }
 
     function decrementTaskCount() {
         count = Math.max(0, count - 1);
-        sessionStorage.setItem("taskCount", count);
+        localStorage.setItem("taskCount", count);
         taskCount.textContent = count;
     }
 
-    //Part 3: Theme Persistence with Cookies 
+    // Part 3: Theme Persistence with Cookies 
 
     const savedTheme = getCookie("theme");
     if (savedTheme) {
@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
         setCookie("theme", theme, 100);
     });
 
-    //Part 4: REST API Integration 
+    // Part 4: REST API Integration 
 
     fetchQuoteBtn.addEventListener("click", async () => {
         try {
