@@ -8,24 +8,21 @@ document.addEventListener("DOMContentLoaded", () => {
     const quoteContainer = document.getElementById("quote");
 
     //  Part 1: To-Do List with Local Storage
-   // Load tasks from local storage
     let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
     tasks.forEach(addTaskToDOM);
 
-    // Handle form submission
     todoForm.addEventListener("submit", (e) => {
         e.preventDefault();
         const task = todoInput.value.trim();
         if (task === "") return;
 
         tasks.push(task);
-        localStorage.setItem("tasks", JSON.stringify(tasks)); // Save in local storage
+        localStorage.setItem("tasks", JSON.stringify(tasks));
         addTaskToDOM(task);
         incrementTaskCount();
         todoInput.value = "";
     });
 
-    // Function to add task to the DOM
     function addTaskToDOM(task) {
         const li = document.createElement("li");
         li.textContent = task;
@@ -43,27 +40,25 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Part 2: Session Storage for Interaction Tracking 
-
-    let count = localStorage.getItem("taskCount") || 0;
+    let count = sessionStorage.getItem("taskCount") || 0; // ✅ FIX: Use `sessionStorage`
     taskCount.textContent = count;
 
     function incrementTaskCount() {
         count++;
-        localStorage.setItem("taskCount", count);
+        sessionStorage.setItem("taskCount", count); // ✅ FIX: Store count in `sessionStorage`
         taskCount.textContent = count;
     }
 
     function decrementTaskCount() {
         count = Math.max(0, count - 1);
-        localStorage.setItem("taskCount", count);
+        sessionStorage.setItem("taskCount", count); // ✅ FIX: Store count in `sessionStorage`
         taskCount.textContent = count;
     }
 
     // Part 3: Theme Persistence with Cookies 
-
     const savedTheme = getCookie("theme");
-    if (savedTheme) {
-        document.body.classList.add(savedTheme);
+    if (savedTheme === "dark-mode") {
+        document.body.classList.add("dark-mode");
     }
 
     themeToggle.addEventListener("click", () => {
@@ -73,10 +68,10 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // Part 4: REST API Integration 
-
     fetchQuoteBtn.addEventListener("click", async () => {
         try {
             const response = await fetch("https://api.quotable.io/random");
+            if (!response.ok) throw new Error("API error"); // ✅ Handle HTTP errors
             const data = await response.json();
             quoteContainer.textContent = data.content;
         } catch (error) {
@@ -98,8 +93,8 @@ document.addEventListener("DOMContentLoaded", () => {
     function getCookie(name) {
         let nameEQ = name + "=";
         let cookies = document.cookie.split(";");
-        for (let i = 0; i < cookies.length; i++) {
-            let cookie = cookies[i].trim();
+        for (let cookie of cookies) {
+            cookie = cookie.trim();
             if (cookie.indexOf(nameEQ) === 0) return cookie.substring(nameEQ.length);
         }
         return null;
