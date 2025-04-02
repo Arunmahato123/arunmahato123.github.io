@@ -40,18 +40,18 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Part 2: Session Storage for Interaction Tracking 
-    let count = sessionStorage.getItem("taskCount") || 0; // ✅ FIX: Use `sessionStorage`
+    let count = sessionStorage.getItem("taskCount") || 0; 
     taskCount.textContent = count;
 
     function incrementTaskCount() {
         count++;
-        sessionStorage.setItem("taskCount", count); // ✅ FIX: Store count in `sessionStorage`
+        sessionStorage.setItem("taskCount", count); 
         taskCount.textContent = count;
     }
 
     function decrementTaskCount() {
         count = Math.max(0, count - 1);
-        sessionStorage.setItem("taskCount", count); // ✅ FIX: Store count in `sessionStorage`
+        sessionStorage.setItem("taskCount", count); 
         taskCount.textContent = count;
     }
 
@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
     fetchQuoteBtn.addEventListener("click", async () => {
         try {
             const response = await fetch("https://api.quotable.io/random");
-            if (!response.ok) throw new Error("API error"); // ✅ Handle HTTP errors
+            if (!response.ok) throw new Error("API error"); 
             const data = await response.json();
             quoteContainer.textContent = data.content;
         } catch (error) {
