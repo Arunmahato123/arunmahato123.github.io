@@ -1,32 +1,50 @@
-// Quotes collection categorized by mood
-const quotes = {
-    happy: [
-      "Happiness is contagious — spread it around!",
-      "The purpose of our lives is to be happy.",
-      "Happiness is not something ready made. It comes from your own actions."
-    ],
-    sad: [
-      "Tough times never last, but tough people do.",
-      "It’s okay to not be okay. Better days are coming.",
-      "Sadness flies away on the wings of time."
-    ],
-    Worried: [
-      "You are stronger than you think.",
-      "Take a deep breath — you’ve got this.",
-      "Sometimes the most productive thing you can do is relax."
-    ],
-    excited: [
-      "Great things are coming your way!",
-      "Keep your enthusiasm alive — it’s contagious.",
-      "Let your excitement shine and inspire others!"
-    ]
-    Anger:[
-      "Anger is a powerful catalyst for change when wielded with purpose and resolve.",
-      "Let not anger be your downfall, but the fire that ignites your resolve.",
-      "In the crucible of anger, clarity is forged."
 
-    ]
-  };
+// we are working on API , we will finish next day
+
+
+// Quotes collection categorized by mood
+ const quotes = {
+  happy: 
+  $.ajax({
+    method: 'GET',
+    url: 'https://api.api-ninjas.com/v1/quotes',
+    headers: { 'X-Api-Key': 'jQe1fIBjLoaX/Uyg0aRLkA==nuKBUNvXQqs1VoSN'},
+    contentType: 'application/json',
+    success: function(result) {
+        console.log(result);
+    },
+    error: function ajaxError(jqXHR) {
+        console.error('Error: ', jqXHR.responseText);
+    }
+  })
+}
+
+//       "Happiness is contagious — spread it around!",
+//       "The purpose of our lives is to be happy.",
+//       "Happiness is not something ready made. It comes from your own actions."
+//     ],
+//     sad: [
+//       "Tough times never last, but tough people do.",
+//       "It’s okay to not be okay. Better days are coming.",
+//       "Sadness flies away on the wings of time."
+//     ],
+//     Worried: [
+//       "You are stronger than you think.",
+//       "Take a deep breath — you’ve got this.",
+//       "Sometimes the most productive thing you can do is relax."
+//     ],
+//     excited: [
+//       "Great things are coming your way!",
+//       "Keep your enthusiasm alive — it’s contagious.",
+//       "Let your excitement shine and inspire others!"
+//     ],
+//     Angry:[
+//       "Anger is a powerful catalyst for change when wielded with purpose and resolve.",
+//       "Let not anger be your downfall, but the fire that ignites your resolve.",
+//       "In the crucible of anger, clarity is forged."
+
+//     ]
+//   };
   
   // Select elements
   const moodForm = document.getElementById('moodForm');

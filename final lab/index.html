@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mood Tracker & Quote Generator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Mood Tracker & Quote Generator</h1>
+
+    <form id="moodForm">
+      <label for="moodSelect">How are you feeling today?</label>
+      <select id="moodSelect" required>
+        <option value="">--Select Mood--</option>
+        <option value="happy">Happy</option>
+        <option value="sad">Sad</option>
+        <option value="Worried">Worried</option>
+        <option value="excited">Excited</option>
+        <option value="Angry">Angry</option>
+      </select>
+      <button type="submit">Get Quote</button>
+    </form>
+
+    <div id="quoteDisplay"></div>
+
+
+    <h2>Mood History</h2>
+    <h3>Total emotions:</h3>
+    <ul>Happy</ul>
+    <ul>Sad</ul>
+    <ul>worried</ul>
+    <ul>Excited</ul>
+    <ul>Angry</ul>
+    <ul id="moodHistory"></ul>
+    
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
