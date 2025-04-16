@@ -16,25 +16,26 @@
         <option value="">--Select Mood--</option>
         <option value="happy">Happy</option>
         <option value="sad">Sad</option>
-        <option value="Worried">Worried</option>
+        <option value="worried">Worried</option>
         <option value="excited">Excited</option>
-        <option value="Angry">Angry</option>
+        <option value="angry">Angry</option>
       </select>
       <button type="submit">Get Quote</button>
     </form>
 
     <div id="quoteDisplay"></div>
 
-
     <h2>Mood History</h2>
-    <h3>Total emotions:</h3>
-    <ul>Happy:</ul>
-    <ul>Sad:</ul>
-    <ul>worried:</ul>
-    <ul>Excited:</ul>
-    <ul>Angry:</ul>
     <ul id="moodHistory"></ul>
-    
+
+    <h3>Total emotions:</h3>
+    <ul id="moodTotals">
+      <li>Happy: <span id="count-happy">0</span></li>
+      <li>Sad: <span id="count-sad">0</span></li>
+      <li>Worried: <span id="count-worried">0</span></li>
+      <li>Excited: <span id="count-excited">0</span></li>
+      <li>Angry: <span id="count-angry">0</span></li>
+    </ul>
   </div>
 
   <script src="script.js"></script>
