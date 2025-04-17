@@ -35,6 +35,7 @@ function saveMood(mood) {
   localStorage.setItem("moodHistory", JSON.stringify(moods));
 }
 
+// loadhistory
 function loadMoodHistory() {
   let moods = JSON.parse(localStorage.getItem("moodHistory")) || [];
   const moodHistory = document.getElementById("moodHistory");
@@ -45,7 +46,7 @@ function loadMoodHistory() {
     moodHistory.appendChild(li);
   });
 }
-
+//update mood-count 
 function updateMoodCounts() {
   let moods = JSON.parse(localStorage.getItem("moodHistory")) || [];
   const counts = { happy: 0, sad: 0, worried: 0, excited: 0, angry: 0 };
@@ -61,6 +62,7 @@ function updateMoodCounts() {
     document.getElementById(`count-${mood}`).textContent = counts[mood];
   }
 }
+
 
 window.addEventListener("load", () => {
   loadMoodHistory();
