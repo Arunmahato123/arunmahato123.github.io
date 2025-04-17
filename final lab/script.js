@@ -9,36 +9,22 @@ document.getElementById("moodForm").addEventListener("submit", function(e) {
     return;
   }
 
-  const moodCategories = {
-    happy: "happiness",
-    sad: "inspirational",
-    worried: "motivational",
-    excited: "success",
-    angry: "anger"
-  };
+  // Save the mood to localStorage and update history and counts
+  saveMood(mood);
+  loadMoodHistory();
+  updateMoodCounts();
 
-  const category = moodCategories[mood];
-
-  fetch(`https://api.api-ninjas.com/v1/quotes?category=${category}`, {
-    headers: { "X-Api-Key": "xi3u16/VzRfINhcbCIhREQ==GDluysybou8tVChJ" }
-  })
-  .then(response => response.json())
-  .then(data => {
-    const quoteDisplay = document.getElementById("quoteDisplay");
-    if (data.length > 0) {
-      quoteDisplay.textContent = `"${data[0].quote}" — ${data[0].author}`;
-    } else {
-      quoteDisplay.textContent = "No quote found. Try again!";
-    }
-
-    saveMood(mood);
-    loadMoodHistory();
-    updateMoodCounts();
-  })
-  .catch(error => {
-    console.error("Error fetching quote:", error);
-    document.getElementById("quoteDisplay").textContent = "Failed to load quote.";
-  });
+  // Fetch a random quote from Quotable.io
+  fetch("http://api.quotable.io/random")
+    .then(response => response.json())
+    .then(data => {
+      const quoteDisplay = document.getElementById("quoteDisplay");
+      quoteDisplay.textContent = `"${data.content}" — ${data.author}`;
+    })
+    .catch(error => {
+      console.error("Error fetching quote:", error);
+      document.getElementById("quoteDisplay").textContent = "Failed to load quote.";
+    });
 
   moodSelect.value = "";
 });
