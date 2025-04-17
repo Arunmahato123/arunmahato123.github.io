@@ -63,7 +63,7 @@ function updateMoodCounts() {
   }
 }
 
-
+//Re-loading
 window.addEventListener("load", () => {
   loadMoodHistory();
   updateMoodCounts();
