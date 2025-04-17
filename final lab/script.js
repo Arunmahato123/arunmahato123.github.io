@@ -15,7 +15,7 @@ document.getElementById("moodForm").addEventListener("submit", function(e) {
   updateMoodCounts();
 
   // Fetch a random quote from Quotable.io
-  fetch("http://api.quotable.io/random")
+  fetch("https://api.quotable.io/random")
     .then(response => response.json())
     .then(data => {
       const quoteDisplay = document.getElementById("quoteDisplay");
